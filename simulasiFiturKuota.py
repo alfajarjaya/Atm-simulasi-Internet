@@ -1,9 +1,6 @@
-Balance=10
-
-# Menu pembayaran
+balance = 10
 
 def pembayaran():
-    global Balance
     print("Pilih Pembayaran")
     print("""
         1. Balance
@@ -11,72 +8,66 @@ def pembayaran():
         3. Ovo
         """)
     pilihan = int(input())
+    
     if pilihan == 1:
-        
-        print("Pesanan Telah diterima, mohon tunggu informasi paket lewat sms anda")
+        print("Pesanan Telah diterima, mohon tunggu informasi paket lewat SMS Anda")
     elif pilihan == 2:
-        dana = int(input("Masukkan nomor Dana Anda:"))
-        print("Permintaan anda telah di terima, mohon tunggu dari sms anda untuk melanjutkan pembelian lewat DANA")
+        nomor_dana = int(input("Masukkan nomor Dana Anda:"))
+        print("Permintaan anda telah di terima, mohon tunggu dari SMS anda untuk melanjutkan pembelian lewat DANA")
     elif pilihan == 3:
-        ovo = int(input("Masukkan nomor Ovo Anda:"))
-        print("Permintaan anda telah di terima, mohon tunggu dari sms anda untuk melanjutkan pembelian lewat OVO")
+        nomor_ovo = int(input("Masukkan nomor Ovo Anda:"))
+        print("Permintaan anda telah di terima, mohon tunggu dari SMS anda untuk melanjutkan pembelian lewat OVO")
     else:
         print("Pilihan tidak valid")
 
-# Menu beli pulsa
-
 def beli_pulsa():
-    global Balance
+    global balance
 
-    beli=int(input("Masukkan nomor:"))
-    harga=float(input("Beli berapa?:Rp"))
-    
+    beli = int(input("Masukkan nomor:"))
+    harga = float(input("Beli berapa?: Rp"))
+
     print("Pilih Pembayaran")
     print("""
         1. Dana
         2. Ovo
     """)
     pilihan = int(input())
+    
     if pilihan == 1:
-        dana = int(input("Masukkan nomor Dana Anda:"))
-        print("Permintaan anda telah di terima, mohon tunggu dari sms anda untuk melanjutkan pembelian lewat DANA")
+        nomor_dana = int(input("Masukkan nomor Dana Anda:"))
+        print("Permintaan anda telah di terima, mohon tunggu dari SMS anda untuk melanjutkan pembelian lewat DANA")
     elif pilihan == 2:
-        ovo = int(input("Masukkan nomor Ovo Anda:"))
-        print("Permintaan anda telah di terima, mohon tunggu dari sms anda untuk melanjutkan pembelian lewat OVO")
+        nomor_ovo = int(input("Masukkan nomor Ovo Anda:"))
+        print("Permintaan anda telah di terima, mohon tunggu dari SMS anda untuk melanjutkan pembelian lewat OVO")
     else:
         print("Pilihan tidak valid")
-   
-    Balance += harga
-    
-    print("Pulsa sudah terisi",Balance)
 
-# Menu cek pulsa
+    balance += harga
+
+    print(f"Pembelian pulsa ke nomor {beli} sebesar {harga} telah masuk ke akun anda, total pulsa anda sekarang adalah {balance}")
 
 def cek_pulsa():
-    global Balance
-    print("Pulsa anda saat ini adalah: Rp",Balance)
+    global balance
+    print("Pulsa anda saat ini adalah: Rp", balance)
     print("Ingin beli pulsa? (y/t):")
-    pilihan=input()
+    pilihan = input().lower()
 
-    if pilihan.lower() == "y":
+    if pilihan == "y":
         beli_pulsa()
-    elif pilihan.lower() == "t":
+    elif pilihan == "t":
         print("Terima kasih telah menggunakan layanan kami")
     else:
-    	print("Menu tidak valid")
-    
+        print("Menu tidak valid")
+
     print("Ingin membeli kuota? (y/t)")
-    lanjut=input()
-    
+    lanjut = input()
+
     if lanjut.lower() == "y":
-    	menu_utama()
+        menu_utama()
     elif lanjut.lower() == "t":
-    	print("Terima kasih telah menggunakan layanan kami")
+        print("Terima kasih telah menggunakan layanan kami")
     else:
-    	print("Menu tidak valid")
-
-
-# Informasi pulsa
+        print("Menu tidak valid")
 
 def info():
     print("""
@@ -92,10 +83,8 @@ def info():
     else:
         print("Pilihan tidak valid")
 
-# Menu Unlimited harian
-
 def uh():
-    global Balance
+    global balance
 
     print("""
     1. Unlimited Harian 9rb 1gb/1 hari (1gb/hari)
@@ -157,42 +146,41 @@ def uh():
     else:
         print("pilihan tidak valid")
 
-    if harga > Balance:
-        print("Maaf saldo tidak cukup","saldo anda sekarang adalah",Balance)
+    if harga > balance:
+        print("Maaf saldo tidak cukup","saldo anda sekarang adalah",balance)
         print("Ingin beli pulsa? (y/t):")
         
         pilihan=input()
         
         if pilihan.lower() == "y":
-        	beli_pulsa()
+            beli_pulsa()
         elif pilihan.lower() == "t":
-        	print("Terima kasih telah menggunakan layanan kami")
+            print("Terima kasih telah menggunakan layanan kami")
         else:
-        	print("Menu tidak valid")
-        	
+            print("Menu tidak valid")
+            
         print("Lanjut pembelian? (y/t):")
         
         lanjut=input()
         
         if lanjut.lower() == "y":
-        	uh()
+            uh()
         else:
-        	print("Terima kasih telah menggunakan layanan kami")
+            print("Terima kasih telah menggunakan layanan kami")
         
     else:
         pembayaran()
-# Menu Unlimited Nonstop
 
 def un():
-    global Balance
+    global balance
 
     print("""
     1. Unlimited Nonstop 12gb / 30 hari
     2. Unlimited Nonstop 18gb / 30 hari
     3. Unlimited Nonstop 24gb / 30 hari
     4. Unlimited Nonstop 32gb / 35 hari
-    98.Next
-          """)
+    98. Next
+    """)
     
     pilihan= int(input())
 
@@ -241,41 +229,39 @@ def un():
     else:
         print("pilihan tidak valid")
 
-    if harga > Balance:
-        print("Maaf saldo tidak cukup","saldo anda sekarang adalah",Balance)
+    if harga > balance:
+        print("Maaf saldo tidak cukup","saldo anda sekarang adalah",balance)
         print("Ingin beli pulsa? (y/t):")
         
         pilihan=input()
         
         if pilihan.lower() == "y":
-        	beli_pulsa()
+            beli_pulsa()
         elif pilihan.lower() == "t":
-        	print("Terima kasih telah menggunakan layanan kami")
+            print("Terima kasih telah menggunakan layanan kami")
         else:
-        	print("Menu tidak valid")
-        	
+            print("Menu tidak valid")
+            
         print("Lanjut pembelian? (y/t):")
         
         lanjut=input()
         
         if lanjut.lower() == "y":
-        	un()
+            un()
         else:
-        	print("Terima kasih telah menggunakan layanan kami")
+            print("Terima kasih telah menggunakan layanan kami")
     else:
         pembayaran()
 
-# Menu Kuota yang ada internet malam
-
 def kuota():
-    global Balance
+    global balance
 
     print("""
     1.Kuota 10gb 18k
     2.Kuota 12gb 20k
     3.Kuota 15gb 25k
     4.Kuota 25gb 38k
-          """)
+    """)
     
     pilihan= int(input())
 
@@ -298,59 +284,60 @@ def kuota():
     else:
         print("Pilihan tidak valid")
     
-    if harga > Balance:
-        print("Maaf saldo tidak cukup","saldo anda sekarang adalah",Balance)
+    if harga > balance:
+        print("Maaf saldo tidak cukup","saldo anda sekarang adalah",balance)
         print("Ingin beli pulsa? (y/t):")
         
         pilihan=input()
         
         if pilihan.lower() == "y":
-        	beli_pulsa()
+            beli_pulsa()
         elif pilihan.lower() == "t":
-        	print("Terima kasih telah menggunakan layanan kami")
+            print("Terima kasih telah menggunakan layanan kami")
         else:
-        	print("Menu tidak valid")
-        	
+            print("Menu tidak valid")
+            
         print("Lanjut pembelian? (y/t):")
         
         lanjut=input()
         
         if lanjut.lower() == "y":
-        	kuota()
+            kuota()
         else:
-        	print("Terima kasih telah menggunakan layanan kami")
+            print("Terima kasih telah menggunakan layanan kami")
     else:
         pembayaran()
 
 def menu_utama():
-	print("""
-	1.Unlimited Harian
-	2.Unlimited Nonstop
-	3.Kuota
-	4.Informasi Layanan
-	""")
-	print("")
-		
-	pilihan=input()
+    print("""
+        1. Unlimited Harian
+        2. Unlimited Nonstop
+        3. Kuota
+        4. Informasi Layanan
+        """)
+    print("")
+        
+    pilihan = input()
     
-	if pilihan == "1":
-		uh()
-	elif pilihan == "2":
-		un()
-	elif pilihan == "3":
-		kuota()
-	elif pilihan == "4":
-		info()	
-	else:
-	   	print("Menu tidak valid")
-    	
+    if pilihan == "1":
+        uh()
+    elif pilihan == "2":
+        un()
+    elif pilihan == "3":
+        kuota()
+    elif pilihan == "4":
+        info()    
+    else:
+        print("Menu tidak valid")
+
 def telepon():
-	kode=input()
-	
-	if kode == "*123#":
-		menu_utama()
-	else:
-		print("Kode telah diganti ke *123#")
-		telepon()
-		
+    kode = input()
+    
+    if kode == "*123#":
+        menu_utama()
+    else:
+        print("Kode telah diganti ke *123#")
+        telepon()
+
 telepon()
+
